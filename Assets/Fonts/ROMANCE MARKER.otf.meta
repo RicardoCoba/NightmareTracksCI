@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 122a58a14c29ece468b0c4e0889671b0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - ROMANCE MARKER
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c10794dcb2432d8438e14668c2a3b438, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
