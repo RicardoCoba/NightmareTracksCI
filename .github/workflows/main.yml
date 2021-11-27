@@ -26,7 +26,7 @@ jobs:
         with:
           host: 23.20.191.248
           username: root
-          key: ${{KEY_SECRET}}
+          key: ${{secrets.KEY_SECRET}}
           port: 22
           run: |
             sudo su
