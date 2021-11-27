@@ -19,17 +19,4 @@ branding:
 runs:
   using: 'node12'
   main: 'action/index.js'
-jobs:
-  job_one: 
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: testing transportes server ssh connection
-        uses: appleboy/ssh-action@master
-        with:
-          host: 23.20.191.248
-          username: root
-          key: ${{KEY_SECRET}}
-          port: 22
-          run: |
-          sudo su
+
