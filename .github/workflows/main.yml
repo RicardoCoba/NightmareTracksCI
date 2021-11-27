@@ -40,11 +40,3 @@ jobs:
         with:
           name: ${{ steps.getManualLicenseFile.outputs.filePath }}
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
-
-  testjob3:
-      name: Test-3
-      stage: pruebadeploy
-      script:
-      - ssh -i $AUTHORIZATION ubuntu@23.20.191.248
-      - sudo su
-      - service apache2 restart
