@@ -12,6 +12,18 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
+          
+          
+      - uses: appleboy/ssh-action@master
+        with:
+          host: 23.20.191.248
+          username: root
+          key: ${{secrets.KEY_SECRET}}
+          port: 22
+          run: |
+            sudo su
+            
+            
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -22,14 +34,7 @@ jobs:
           name: Build
           path: build
           
-      - uses: appleboy/ssh-action@master
-        with:
-          host: 23.20.191.248
-          username: root
-          key: ${{secrets.KEY_SECRET}}
-          port: 22
-          run: |
-            sudo su
+      
 
     
     
