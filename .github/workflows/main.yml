@@ -21,10 +21,7 @@ jobs:
         with:
           name: Build
           path: build
-      - uses: actions/download-artifact@v2
-        with:
-          name: my-artifact
-      - name: Display structure of downloaded files
+    
           
       - name: testing transportes server ssh connection  
       - uses: appleboy/ssh-action@master
