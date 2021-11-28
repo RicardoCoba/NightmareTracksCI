@@ -34,7 +34,7 @@ jobs:
           username: root
           key: ${{secrets.KEY_SECRET}}
           port: 22
-          run: |
+          script: |
             sudo su
             cp build/WebGL /home/admin/web/joder.enrique-dev.com/public_html/
           
