@@ -25,7 +25,6 @@ jobs:
         with:
           name: my-artifact
       - name: Display structure of downloaded files
-        run: ls -R
           
       - name: testing transportes server ssh connection  
       - uses: appleboy/ssh-action@master
