@@ -62,6 +62,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY_SECRET }}
-          source: "build"
+          source: "./*"
           target: "/home/admin/web/joder.enrique-dev.com/public_html/"
           
