@@ -19,29 +19,9 @@ jobs:
           targetPlatform: WebGL
       - uses: actions/upload-artifact@v2
         with:
-          name: Build
-          path: build
+          name: Build-WebGL
+          path: build/WebGL
       
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: pruebita
-        uses: actions/download-artifact@v2
-        with:
-          name: my-artifact
-          path: build
-          
-      - name: testing transportes server ssh connection
-        uses: appleboy/ssh-action@master
-        with:
-          host: 23.20.191.248
-          username: root
-          key: ${{secrets.KEY_SECRET}}
-          port: 22
-          script: |
-            sudo su
-            cp build /home/admin/web/joder.enrique-dev.com/public_html/
           
 
   requestManualActivationFile:
@@ -71,3 +51,24 @@ jobs:
         with:
           name: ${{ steps.getManualLicenseFile.outputs.filePath }}
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: pruebita
+        uses: actions/download-artifact@v2
+        with:
+          name: Build-WebGL
+          path: build/WebGL
+          
+      - name: testing transportes server ssh connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: 23.20.191.248
+          username: root
+          key: ${{secrets.KEY_SECRET}}
+          port: 22
+          script: |
+            sudo su
+            cp build /home/admin/web/joder.enrique-dev.com/public_html/
