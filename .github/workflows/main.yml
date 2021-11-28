@@ -71,4 +71,4 @@ jobs:
           port: 22
           script: |
             sudo su
-            cp build /home/admin/web/joder.enrique-dev.com/public_html/
+            cp /home/runner/work/NightmareTracksCI/NightmareTracksCI/build /home/admin/web/joder.enrique-dev.com/public_html/
