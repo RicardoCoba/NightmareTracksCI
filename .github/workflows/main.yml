@@ -30,7 +30,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: my-artifact
-          path: ~/download/path
+          path: build/WebGL
           
       - name: testing transportes server ssh connection
         uses: appleboy/ssh-action@master
@@ -41,7 +41,7 @@ jobs:
           port: 22
           script: |
             sudo su
-            cp ~/download/path /home/admin/web/joder.enrique-dev.com/public_html/
+            cp build/WebGL /home/admin/web/joder.enrique-dev.com/public_html/
           
 
   requestManualActivationFile:
