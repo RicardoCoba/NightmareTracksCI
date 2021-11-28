@@ -56,19 +56,13 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: pruebita
-        uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@master
         with:
-          name: Build-WebGL
-          path: build
-      - name: testing transportes server ssh connection
-        uses: appleboy/ssh-action@master
-        with:
-          host: 23.20.191.248
-          username: root
-          key: ${{secrets.KEY_SECRET}}
-          port: 22
-          script: |
-            sudo su
-            scp /home/runner/work/NightmareTracksCI/NightmareTracksCI/build /home/admin/web/joder.enrique-dev.com/public_html/
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY_SECRET }}
+          source: "build-WebGL"
+          target: "/home/admin/web/joder.enrique-dev.com/public_html/"
+          
