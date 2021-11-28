@@ -23,17 +23,6 @@ jobs:
           path: build
     
           
-      - name: testing transportes server ssh connection  
-      - uses: appleboy/ssh-action@master
-        with:
-          host: 23.20.191.248
-          username: root
-          key: ${{secrets.KEY_SECRET}}
-          port: 22
-          script: |
-            sudo su
-            cp build/WebGL /home/admin/web/joder.enrique-dev.com/public_html/
-          
       
 
   requestManualActivationFile:
