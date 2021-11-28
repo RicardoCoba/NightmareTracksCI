@@ -61,7 +61,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build
-          path: build/WebGl
+          path: build
       - name: copy file via ssh key
         uses: appleboy/scp-action@master
         with:
