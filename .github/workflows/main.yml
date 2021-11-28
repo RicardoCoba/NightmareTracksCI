@@ -12,19 +12,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-          
-          
-      - uses: appleboy/ssh-action@master
-        with:
-          host: 23.20.191.248
-          username: root
-          key: ${{secrets.KEY_SECRET}}
-          port: 22
-          run: |
-            sudo su
-            cp path/to/artifacts/ /home/admin/web/joder.enrique-dev.com/public_html/
-            
-            
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -34,11 +21,23 @@ jobs:
         with:
           name: Build
           path: build
+      - uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+      - name: Display structure of downloaded files
+        run: ls -R
           
-      
-
-    
-    
+      - name: testing transportes server ssh connection  
+      - uses: appleboy/ssh-action@master
+        with:
+          host: 23.20.191.248
+          username: root
+          key: ${{secrets.KEY_SECRET}}
+          port: 22
+          run: |
+            sudo su
+            cp build/WebGL /home/admin/web/joder.enrique-dev.com/public_html/
+          
       
 
   requestManualActivationFile:
