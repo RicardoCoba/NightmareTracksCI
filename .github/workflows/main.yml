@@ -26,7 +26,13 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: testing transportes server ssh connection  
+      - name: pruebita
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+          path: ~/download/path
+          
+      - name: testing transportes server ssh connection
         uses: appleboy/ssh-action@master
         with:
           host: 23.20.191.248
@@ -35,7 +41,7 @@ jobs:
           port: 22
           script: |
             sudo su
-            cp build/WebGL /home/admin/web/joder.enrique-dev.com/public_html/
+            cp ~/download/path /home/admin/web/joder.enrique-dev.com/public_html/
           
 
   requestManualActivationFile:
