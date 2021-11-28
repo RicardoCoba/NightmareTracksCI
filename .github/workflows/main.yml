@@ -63,9 +63,6 @@ jobs:
         with:
           name: Build-WebGL
           path: build
-      - name: estructura
-        run: ls -R
-        working-directory: build/WebGl
       - name: testing transportes server ssh connection
         uses: appleboy/ssh-action@master
         with:
