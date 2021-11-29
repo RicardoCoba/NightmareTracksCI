@@ -70,5 +70,5 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY_SECRET }}
           source: "build/*"
-          target: "/home/admin/web/joder.enrique-dev.com/public_html/"
+          target: "/home/admin/web/jueguito.enrique-dev.com/public_html/"
           
