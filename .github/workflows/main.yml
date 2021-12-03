@@ -12,8 +12,16 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - run: yarn
-      
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: WebGL
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build-WebGL
+          path: build/WebGL
+          
 
   requestManualActivationFile:
     name: Request manual activation file 🔑
@@ -42,3 +50,25 @@ jobs:
         with:
           name: ${{ steps.getManualLicenseFile.outputs.filePath }}
           path: ${{ steps.getManualLicenseFile.outputs.filePath }}
+  
+  deploy:
+    needs: tests
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecucion deploy
+        uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: Build-WebGL
+          path: build
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY_SECRET }}
+          source: "build/*"
+          target: "/home/admin/web/jueguito.enrique-dev.com/public_html/"
+          
